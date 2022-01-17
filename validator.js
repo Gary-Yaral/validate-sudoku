@@ -17,8 +17,11 @@ function getColumns(matrix, x = 0, y = 9){
     for(let j = x; j < y; j++) {
       array.push(matrix[j][i])
     }
+
     columns.push(array);
+
    }
+
   return columns;
 }
 
@@ -39,23 +42,19 @@ function verifyRepeated(matrix) {
   })
 
   return array.filter(r => r.repeat === true);
+
 }
 
 function getBlock(matrix, x, y, limit) {
   let block = [];
-
-  for(x ; x < y; x++){
-      
+  for(x ; x < y; x++){      
     let data = [];
-    for(let y = limit * 3; y < (3 + (limit * 3)); y++) {
-      
+    for(let y = limit * 3; y < (3 + (limit * 3)); y++) {      
       data.push(matrix[x][y])
-
     }
 
     block.push(...data);
-
-    }
+  }
 
   return block;
 
@@ -65,22 +64,22 @@ function getAllBlocks(matrix) {
   let blocks= [];
   let counter = 0;
   let row = 0;
-    while(row < 3) {
-      let x = row * 3;
-      let y = (row * 3) + 3;
-      blocks.push(getBlock(matrix,x,y,counter))
+  while(row < 3) {
+    let x = row * 3;
+    let y = (row * 3) + 3;
+    blocks.push(getBlock(matrix,x,y,counter))
       
-      row++;
+    row++;
 
-      if(row === 3){
-        counter++;
-        row = 0;
-      }
-
-      if (counter === 3) {
-        row = 4;
-      }
+    if(row === 3){
+      counter++;
+      row = 0;
     }
+
+    if (counter === 3) {
+      row = 4;
+    }
+  }
 
   return blocks;
 
